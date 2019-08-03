@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>textRotator</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    </head>
+    <body>
+        
+            <h1> I am <div id="rotate">  
+                <div style="color:red">RED</div> 
+                <div style="color:blue">BLUE</div> 
+                <div style="color:green">GREEN</div> 
+                </div> 
+            </h1>
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            (function($) {
+                $.fn.extend({
+                    rotaterator: function(options) {
+                    var defaults = {
+                        fadeSpeed: 500,
+                        pauseSpeed: 100,
+                        child: null
+                    };
+
+                    var options = $.extend(defaults, options);
+
+                    return this.each(function() {
+                        var o = options;
+                        var obj = $(this);
+                        var items = $(obj.children(), obj);
+                        items.each(function() {
+                        $(this).hide();
+                        });
+                        if (!o.child) {
+                        var next = $(obj).children(":first");
+                        } else {
+                        var next = o.child;
+                        }
+                        $(next).fadeIn(o.fadeSpeed, function() {
+                        $(next)
+                            .delay(o.pauseSpeed)
+                            .fadeOut(o.fadeSpeed, function() {
+                            var next = $(this).next();
+                            if (next.length == 0) {
+                                next = $(obj).children(":first");
+                            }
+                            $(obj).rotaterator({
+                                child: next,
+                                fadeSpeed: o.fadeSpeed,
+                                pauseSpeed: o.pauseSpeed
+                            });
+                            });
+                        });
+                    });
+                    }
+                });
+                })(jQuery);
+
+                $(document).ready(function() {
+                $("#rotate").rotaterator({ fadeSpeed: 500, pauseSpeed: 100 });
+                });
+
+        </script>
+    </body>
+</html>

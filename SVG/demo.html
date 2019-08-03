@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>SVG Animation</title>
+
+        <script src="vendor/jquery-2.1.1.min.js"></script>
+		<script src="vendor/jquery.lazylinepainter-1.7.0.js"></script>
+		<script src="js/svgdata.js"></script>
+
+        <script type="text/javascript">
+
+			(function( $ ){
+
+				$(document).ready(function(){
+
+					var $logo = $('#logo');
+
+		            $logo.lazylinepainter({
+		                'svgData': pathObj,
+		                'strokeWidth': 2,
+		                'strokeColor': '#e09b99',
+                        'drawSequential': false,
+                        'ease': 'easeInOutQuad'
+					});			
+
+                    setTimeout(function(){
+                        $logo.lazylinepainter('paint');
+                    }, 10)
+				})
+
+			})( jQuery );
+
+		</script>
+
+		<style>
+			svg{
+				width: 25%;
+			}
+		</style>
+    </head>
+
+    <body>
+    	<div class="content">
+			This is demo SVG Animation
+	    	<div class="logo-wrap">
+		    	<div id='logo'></div>
+		    </div>
+		</div>
+    </body>
+</html>

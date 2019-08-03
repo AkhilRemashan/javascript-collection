@@ -1,0 +1,23 @@
+{
+  "name": "eslinttut",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AkhilRemashan/eslintTut.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AkhilRemashan/eslintTut/issues"
+  },
+  "homepage": "https://github.com/AkhilRemashan/eslintTut#readme",
+  "devDependencies": {
+    "eslint": "^5.13.0"
+  },
+  "dependencies": {},
+  "description": ""
+}
